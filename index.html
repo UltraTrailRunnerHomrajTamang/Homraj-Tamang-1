@@ -451,8 +451,7 @@ button,a{-webkit-tap-highlight-color:transparent}
     #gallery .gallery-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 12px;
-        grid-template-rows: repeat(2, minmax(0, 1fr));
-        row-gap: 12px;
+        row-gap: 26px;
         padding: 0 12px;
     }
 
@@ -495,6 +494,13 @@ footer span,
     .footer p,
     .footer a {
         transform: none !important;
+    }
+}
+@media (max-width: 680px) {
+    #gallery h2 {
+        font-size: clamp(38px, 10vw, 48px);
+        line-height: 1;
+        letter-spacing: -0.06em;
     }
 }
 </style></head><body>
@@ -723,14 +729,19 @@ footer span,
 <section class="gallery-section" id="gallery">
   <div class="wrap">
 <div class="head reveal">
-    <div class="gallery-container">
-        <span class="gallery-label">Moments & Memories</span>
-        <h1>My Adventure Gallery</h1>
-        <p>
-          Exploring the Himalayas, embracing the trails,
-          and capturing moments of running, trekking,
-          and community adventures.
-        </p>
+    <div class="eyebrow">Moments & Memories</div>
+
+    <h2>
+        My Adventure
+        <span class="accent">Gallery.</span>
+    </h2>
+
+    <p>
+        Exploring the Himalayas, embracing the trails,
+        and capturing moments of running, trekking,
+        and community adventures.
+    </p>
+</div>
       
       <nav class="gallery-filters" aria-label="Filter gallery">
         <button class="filter-btn active"
