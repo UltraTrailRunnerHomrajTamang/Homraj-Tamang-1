@@ -15,7 +15,261 @@ footer{padding:72px 0 23px;position:relative;background:#0a1014}.mountain{positi
 .back-to-top{padding:0;border:0;background:none;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;transition:color .2s}
 .back-to-top:hover{color:var(--orange)}
 .back-to-top:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
-.gallery{background:#0d1519}.gallery-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-template-rows:250px 250px;gap:12px}.gallery-item{position:relative;overflow:hidden;background:#182327;border:1px solid var(--line);isolation:isolate}.gallery-item:first-child{grid-row:span 2}.gallery-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.2,.7,.2,1);z-index:-1}.gallery-item:hover img{transform:scale(1.055)}.gallery-item:after{content:'';position:absolute;inset:25% 0 0;background:linear-gradient(transparent,#080d12de);z-index:-1}.gallery-caption{position:absolute;left:19px;right:19px;bottom:17px}.gallery-caption small{display:block;color:#f5a36e;font:700 8px var(--d);letter-spacing:.16em;text-transform:uppercase}.gallery-caption strong{display:block;margin-top:4px;font:700 15px var(--d);letter-spacing:-.02em}.gallery-note{font-size:11px;color:var(--muted);margin:20px 0 0}.gallery-item img[src="image."]{object-position:center 28%}@media(max-width:680px){.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 160px 160px}.gallery-item:first-child{grid-row:span 2}.gallery-item:nth-child(4){grid-column:span 2}.gallery-caption{left:12px;right:10px;bottom:11px}.gallery-caption strong{font-size:12px}}
+.gallery{background:#0d1519}.gallery-section {
+      width: 100%;
+      padding: 60px 20px;
+    }
+
+    .gallery-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .gallery-label {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .gallery-header h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin: 0 0 12px;
+      line-height: 1.15;
+    }
+
+    .gallery-header p {
+      color: var(--muted);
+      max-width: 550px;
+      margin: 0 auto;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* Category filters */
+    .gallery-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .filter-btn {
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--navy);
+      padding: 10px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: white;
+    }
+
+    .filter-btn:focus-visible,
+    .gallery-card:focus-visible,
+    .lightbox button:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 3px;
+    }
+
+    /* Gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      background: #e2e8f0;
+      border-radius: var(--radius);
+      aspect-ratio: 3 / 4;
+      cursor: pointer;
+      isolation: isolate;
+    }
+
+    .gallery-card[hidden] {
+      display: none;
+    }
+
+    .gallery-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 35% 0 0;
+      background: linear-gradient(
+        transparent,
+        rgba(15, 23, 42, 0.85)
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .photo-caption {
+      position: absolute;
+      z-index: 2;
+      left: 12px;
+      right: 10px;
+      bottom: 12px;
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .photo-caption small {
+      display: block;
+      margin-top: 4px;
+      font-size: 10px;
+      font-weight: 400;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(2, 6, 23, 0.94);
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .lightbox img {
+      display: block;
+      max-width: 100%;
+      max-height: 78vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+
+    .lightbox-caption {
+      color: white;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      color: white;
+      background: transparent;
+      border: 0;
+      font-size: 36px;
+      cursor: pointer;
+    }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid #64748b;
+      background: rgba(15, 23, 42, 0.8);
+      color: white;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .lightbox-prev {
+      left: 12px;
+    }
+
+    .lightbox-next {
+      right: 12px;
+    }
+
+    .gallery-footer {
+      text-align: center;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Tablet */
+    @media (min-width: 600px) {
+      .gallery-section {
+        padding: 75px 28px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .gallery-card {
+        border-radius: 14px;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 950px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+    }
+
+    /* Reduce motion when requested by the device */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+
 .reveal{opacity:0;transform:translateY(20px);transition:.7s}.reveal.in{opacity:1;transform:none}
 @media(max-width:900px){.links{gap:12px}.about-grid{gap:34px}.skill-grid{grid-template-columns:repeat(4,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0;border-top:1px solid var(--line)}.stat:nth-child(4){border-top:1px solid var(--line)}.experience{grid-template-columns:1fr}}
 @media(max-width:680px){.wrap{width:calc(100% - 36px)}.section{padding:74px 0}.toggle{display:block;background:none;color:white;border:1px solid var(--line);border-radius:50%;width:42px;height:42px}.links{position:fixed;inset:70px 0 0;background:#090f13fa;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:25px 10vw 12vh;gap:0;transform:translateX(100%);transition:.35s}.nav-open .links{transform:none}.links a,.links a:last-child{font:700 22px var(--d);text-transform:none;padding:14px 0;border:0;border-bottom:1px solid var(--line)}.hero{min-height:680px;height:94svh;align-items:flex-end}.hero-bg{background-position:60% center}.hero .wrap{padding-bottom:96px}.hero h1{font-size:clamp(55px,17vw,90px)}.title{font-size:9px}.kicker{font-size:8px}.tag{font-size:17px}.stamp{width:65px;height:65px;top:40px;right:08px;bottom:auto}.place{font-size:7px}.scroll{display:none}.strip .wrap{justify-content:flex-start;overflow:auto}.strip span:first-child{display:none}.strip span{font-size:8px}.about-grid{grid-template-columns:1fr;gap:40px}.portrait{width:calc(100% - 18px)}.story h2{font-size:42px}.stats{padding-bottom:72px}.stat{padding:20px 15px;min-height:122px}.stat:nth-child(odd){border-left:0}.stat:nth-child(even){border-left:1px solid var(--line)}.stat:nth-child(3),.stat:nth-child(4){border-top:1px solid var(--line)}.stat span{font-size:8px}.timeline{padding-left:20px}.timeline:before{left:3px}.race,.race:nth-child(even){width:100%;margin:0;padding:0 0 16px 22px}.race:before,.race:nth-child(even):before{left:-21px;right:auto}.race h3{font-size:16px}.race-card{padding:16px}.orgs{grid-template-columns:1fr}.org{display:grid;grid-template-columns:1fr auto;gap:4px 10px}.org p{grid-column:1/-1} .gallery-grid {
@@ -359,53 +613,143 @@ button,a{-webkit-tap-highlight-color:transparent}
 </div>
 </div>
 </section>
-<section class="section gallery" id="gallery">
-<div class="wrap">
+<section class="gallery-section" id="gallery">
+  <div class="wrap">
 <div class="head reveal">
-<div class="eyebrow">A life lived outdoors</div>
-<h2>Scenes from<br>the <span class="accent">journey.</span>
-</h2>
-<p>Mountain paths, race days and the landscapes that make every effort worthwhile.</p>
-</div>
-<div class="gallery-grid">
-<figure class="gallery-item reveal">
-<img src="banner.png.png" alt="Mountain landscape from Homraj Tamang’s adventure portfolio" loading="lazy">
-<figcaption class="gallery-caption">
-<small>Himalayan landscapes</small>
-<strong>Where every journey begins</strong>
-</figcaption>
-</figure>
-<figure class="gallery-item reveal">
-<img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&amp;fit=crop&amp;w=1000&amp;q=82" alt="Hikers following a mountain trail" loading="lazy">
-<figcaption class="gallery-caption">
-<small>On the trail</small>
-<strong>Step by step, together</strong>
-</figcaption>
-</figure>
-<figure class="gallery-item reveal">
-<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=1000&amp;q=82" alt="Jagged peaks rising above the clouds" loading="lazy">
-<figcaption class="gallery-caption">
-<small>High places</small>
-<strong>Perspective earned uphill</strong>
-</figcaption>
-</figure>
-<figure class="gallery-item reveal">
-<img src="image.png.png" alt="Homraj Tamang, runner and race director" loading="lazy">
-<figcaption class="gallery-caption">
-<small>The runner</small>
-<strong>Keep showing up</strong>
-</figcaption>
-</figure>
-<figure class="gallery-item reveal">
-<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&amp;fit=crop&amp;w=1000&amp;q=82" alt="Snow-covered mountain beneath a night sky" loading="lazy">
-<figcaption class="gallery-caption">
-<small>Made of mountains</small>
-<strong>Always another horizon</strong>
-</figcaption>
-</figure>
-</div>
-<p class="gallery-note">Mountain photography: Unsplash. Replace with event and trail photos for a personal race-day gallery.</p>
-</div>
+    <div class="gallery-container">
+        <span class="gallery-label">Moments & Memories</span>
+        <h1>My Adventure Gallery</h1>
+        <p>
+          Exploring the Himalayas, embracing the trails,
+          and capturing moments of running, trekking,
+          and community adventures.
+        </p>
+      </header>
+
+      <nav class="gallery-filters" aria-label="Filter gallery">
+        <button class="filter-btn active"
+                data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn"
+                data-filter="trail" aria-pressed="false">Trail Running</button>
+        <button class="filter-btn"
+                data-filter="trekking" aria-pressed="false">Trekking</button>
+        <button class="filter-btn"
+                data-filter="events" aria-pressed="false">Race Events</button>
+        <button class="filter-btn"
+                data-filter="nature" aria-pressed="false">Nature</button>
+      </nav>
+
+      <div class="gallery-grid">
+
+        <!-- Replace each image path with your own photo -->
+
+        <button class="gallery-card"
+                data-category="trail"
+                data-caption="Mountain Trail Running"
+                aria-label="Enlarge Mountain Trail Running photo">
+          <img src="images/trail-running-1.webp"
+               alt="Trail runner on a Himalayan mountain path"
+               width="600" height="800" loading="lazy">
+          <span class="photo-caption">
+            Mountain Trail Running
+            <small>Trail Running</small>
+          </span>
+        </button>
+
+        <button class="gallery-card"
+                data-category="trekking"
+                data-caption="Himalayan Trekking"
+                aria-label="Enlarge Himalayan Trekking photo">
+          <img src="images/trekking-1.webp"
+               alt="Himalayan trekking landscape"
+               width="600" height="800" loading="lazy">
+          <span class="photo-caption">
+            Himalayan Trekking
+            <small>Adventure</small>
+          </span>
+        </button>
+
+        <button class="gallery-card"
+                data-category="events"
+                data-caption="Race Day Memories"
+                aria-label="Enlarge Race Day Memories photo">
+          <img src="images/race-event-1.webp"
+               alt="Trail running race event in Nepal"
+               width="600" height="800" loading="lazy">
+          <span class="photo-caption">
+            Race Day Memories
+            <small>Race Events</small>
+          </span>
+        </button>
+
+        <button class="gallery-card"
+                data-category="nature"
+                data-caption="Beauty of the Himalayas"
+                aria-label="Enlarge Beauty of the Himalayas photo">
+          <img src="images/himalaya-1.webp"
+               alt="Snow-capped Himalayan mountain peaks"
+               width="600" height="800" loading="lazy">
+          <span class="photo-caption">
+            Beauty of the Himalayas
+            <small>Nature</small>
+          </span>
+        </button>
+
+        <button class="gallery-card"
+                data-category="trail"
+                data-caption="The Journey Continues"
+                aria-label="Enlarge The Journey Continues photo">
+          <img src="images/trail-running-2.webp"
+               alt="Mountain trail during an outdoor run"
+               width="600" height="800" loading="lazy">
+          <span class="photo-caption">
+            The Journey Continues
+            <small>Trail Running</small>
+          </span>
+        </button>
+
+        <button class="gallery-card"
+                data-category="events"
+                data-caption="Community and Running"
+                aria-label="Enlarge Community and Running photo">
+          <img src="images/race-event-2.webp"
+               alt="Runners participating in a trail race"
+               width="600" height="800" loading="lazy">
+          <span class="photo-caption">
+            Community and Running
+            <small>Race Events</small>
+          </span>
+        </button>
+
+      </div>
+
+      <p class="gallery-footer">
+        Every trail tells a story. Every journey creates a memory.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Accessible photo viewer -->
+  <div class="lightbox" id="lightbox"
+       role="dialog" aria-modal="true"
+       aria-label="Photo viewer" aria-hidden="true">
+
+    <button class="lightbox-close" id="closeLightbox"
+            aria-label="Close photo viewer">&times;</button>
+
+    <button class="lightbox-arrow lightbox-prev"
+            id="prevPhoto" aria-label="Previous photo">&#8249;</button>
+
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <button class="lightbox-arrow lightbox-next"
+            id="nextPhoto" aria-label="Next photo">&#8250;</button>
+  </div>
+
 </section>
 <section class="section leadership" id="leadership">
 <div class="wrap">
@@ -662,4 +1006,103 @@ button,a{-webkit-tap-highlight-color:transparent}
 </div>
 </div>
 </footer>
-<script>(()=>{const nav=document.querySelector('header'),toggle=document.querySelector('.toggle'),links=[...document.querySelectorAll('.links a')],sections=[...document.querySelectorAll('main section[id]')],reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;const close=()=>{nav.classList.remove('nav-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open menu');toggle.innerHTML='<i class="fa-solid fa-bars"></i>'};toggle.onclick=()=>{let open=!nav.classList.contains('nav-open');nav.classList.toggle('nav-open',open);toggle.setAttribute('aria-expanded',open);toggle.setAttribute('aria-label',open?'Close menu':'Open menu');toggle.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'};links.forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});const onScroll=()=>{nav.classList.toggle('scrolled',scrollY>24);if(!reduced&&innerWidth>680)document.querySelector('.hero-bg').style.transform='scale(1.05) translateY('+Math.min(scrollY*.12,90)+'px)'};addEventListener('scroll',onScroll,{passive:true});onScroll();if('IntersectionObserver'in window){const reveal=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');reveal.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>reveal.observe(el));const counter=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;let el=e.target,end=+el.dataset.count,start=performance.now(),suf=el.dataset.suffix||'';const tick=n=>{let p=Math.min((n-start)/1200,1);el.textContent=Math.round(end*(1-Math.pow(1-p,4)))+suf;if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick);counter.unobserve(el)}),{threshold:.6});document.querySelectorAll('[data-count]').forEach(el=>counter.observe(el));const active=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id))}),{rootMargin:'-35% 0px -55%'});sections.forEach(s=>active.observe(s))}else{document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'));document.querySelectorAll('[data-count]').forEach(e=>e.textContent=e.dataset.count+(e.dataset.suffix||''))}document.querySelector('#year').textContent=new Date().getFullYear()})();</script></body></html>
+<script>(()=>{const nav=document.querySelector('header'),toggle=document.querySelector('.toggle'),links=[...document.querySelectorAll('.links a')],sections=[...document.querySelectorAll('main section[id]')],reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;const close=()=>{nav.classList.remove('nav-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open menu');toggle.innerHTML='<i class="fa-solid fa-bars"></i>'};toggle.onclick=()=>{let open=!nav.classList.contains('nav-open');nav.classList.toggle('nav-open',open);toggle.setAttribute('aria-expanded',open);toggle.setAttribute('aria-label',open?'Close menu':'Open menu');toggle.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'};links.forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});const onScroll=()=>{nav.classList.toggle('scrolled',scrollY>24);if(!reduced&&innerWidth>680)document.querySelector('.hero-bg').style.transform='scale(1.05) translateY('+Math.min(scrollY*.12,90)+'px)'};addEventListener('scroll',onScroll,{passive:true});onScroll();if('IntersectionObserver'in window){const reveal=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');reveal.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>reveal.observe(el));const counter=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;let el=e.target,end=+el.dataset.count,start=performance.now(),suf=el.dataset.suffix||'';const tick=n=>{let p=Math.min((n-start)/1200,1);el.textContent=Math.round(end*(1-Math.pow(1-p,4)))+suf;if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick);counter.unobserve(el)}),{threshold:.6});document.querySelectorAll('[data-count]').forEach(el=>counter.observe(el));const active=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id))}),{rootMargin:'-35% 0px -55%'});sections.forEach(s=>active.observe(s))}else{document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'));document.querySelectorAll('[data-count]').forEach(e=>e.textContent=e.dataset.count+(e.dataset.suffix||''))}document.querySelector('#year').textContent=new Date().getFullYear()})();const filterButtons = document.querySelectorAll(".filter-btn");
+    const cards = [...document.querySelectorAll(".gallery-card")];
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+
+    let currentIndex = 0;
+    let lastFocusedElement = null;
+
+    // Category filtering
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach(item => {
+          const active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+
+        cards.forEach(card => {
+          card.hidden =
+            filter !== "all" && card.dataset.category !== filter;
+        });
+      });
+    });
+
+    function visibleCards() {
+      return cards.filter(card => !card.hidden);
+    }
+
+    function showPhoto(index) {
+      const visible = visibleCards();
+      if (!visible.length) return;
+
+      currentIndex = (index + visible.length) % visible.length;
+
+      const card = visible[currentIndex];
+      const img = card.querySelector("img");
+
+      lightboxImage.src = img.currentSrc || img.src;
+      lightboxImage.alt = img.alt;
+      lightboxCaption.textContent = card.dataset.caption;
+
+      document.getElementById("prevPhoto").hidden =
+        visible.length < 2;
+      document.getElementById("nextPhoto").hidden =
+        visible.length < 2;
+    }
+
+    function openLightbox(card) {
+      lastFocusedElement = card;
+      const index = visibleCards().indexOf(card);
+
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      showPhoto(index);
+      document.getElementById("closeLightbox").focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+
+      lightboxImage.src = "";
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => openLightbox(card));
+    });
+
+    document.getElementById("closeLightbox")
+      .addEventListener("click", closeLightbox);
+
+    document.getElementById("prevPhoto")
+      .addEventListener("click", () => showPhoto(currentIndex - 1));
+
+    document.getElementById("nextPhoto")
+      .addEventListener("click", () => showPhoto(currentIndex + 1));
+
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!lightbox.classList.contains("open")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showPhoto(currentIndex - 1);
+      if (event.key === "ArrowRight") showPhoto(currentIndex + 1);
+    });
+</script></body></html>
