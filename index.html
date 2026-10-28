@@ -411,6 +411,91 @@ button,a{-webkit-tap-highlight-color:transparent}
 .foot-social{grid-column:2;justify-self:center;justify-content:center}
 @media(max-width:760px){.footmain{grid-template-columns:1fr;justify-items:center}.footbrand{justify-self:center}.foot-social{grid-column:1;grid-row:2;justify-self:center}}
 @media(max-width:480px){.footbrand,.foot-social{grid-column:1;justify-self:center}.foot-social{grid-row:2;justify-content:center}}
+/* Gallery layout fix */
+#gallery .images-grid,
+#gallery .images-container,
+#gallery .images-masonry {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Prevent gallery cards from overlapping */
+#gallery .images-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+    row-gap: 24px;
+    align-items: start;
+}
+
+#gallery .images-grid > *,
+#gallery .images-container > *,
+#gallery .images-masonry > * {
+    min-width: 0;
+    position: relative;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#gallery img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Mobile spacing */
+@media screen and (max-width: 768px) {
+    #gallery .images-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 12px;
+        row-gap: 26px;
+        padding: 0 12px;
+    }
+
+    #gallery .gallery-grid img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    #gallery .images-grid > *,
+    #gallery .images-container > *,
+    #gallery .images-masonry > * {
+        transform: none;
+    }
+}
+/* Fix footer text direction */
+footer,
+footer p,
+footer h2,
+footer h3,
+footer a,
+footer span,
+.footer,
+.footer p,
+.footer a {
+    direction: ltr !important;
+    unicode-bidi: normal !important;
+    text-align: center;
+}
+
+/* Remove accidental mirroring from footer elements */
+@media screen and (max-width: 768px) {
+    footer,
+    footer p,
+    footer h2,
+    footer h3,
+    footer a,
+    footer span,
+    .footer,
+    .footer p,
+    .footer a {
+        transform: none !important;
+    }
+}
 </style></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header id="top">
@@ -667,7 +752,7 @@ button,a{-webkit-tap-highlight-color:transparent}
                 data-category="trail"
                 data-caption="Mountain Trail Running"
                 aria-label="Enlarge Mountain Trail Running photo">
-          <img src="images/trail-running-1.png"
+          <img src="images/trail-running-1.webp"
                alt="Trail runner on a Himalayan mountain path"
                width="600" height="800" loading="lazy">
           <span class="photo-caption">
@@ -680,7 +765,7 @@ button,a{-webkit-tap-highlight-color:transparent}
                 data-category="trekking"
                 data-caption="Himalayan Trekking"
                 aria-label="Enlarge Himalayan Trekking photo">
-          <img src="images/trekking-1.png"
+          <img src="images/trekking-1.webp"
                alt="Himalayan trekking landscape"
                width="600" height="800" loading="lazy">
           <span class="photo-caption">
@@ -693,7 +778,7 @@ button,a{-webkit-tap-highlight-color:transparent}
                 data-category="events"
                 data-caption="Race Day Memories"
                 aria-label="Enlarge Race Day Memories photo">
-          <img src="images/race-event-1.png"
+          <img src="images/race-event-1.webp"
                alt="Trail running race event in Nepal"
                width="600" height="800" loading="lazy">
           <span class="photo-caption">
@@ -706,7 +791,7 @@ button,a{-webkit-tap-highlight-color:transparent}
                 data-category="nature"
                 data-caption="Beauty of the Himalayas"
                 aria-label="Enlarge Beauty of the Himalayas photo">
-          <img src="images/himalaya-1.png"
+          <img src="images/himalaya-1.webp"
                alt="Snow-capped Himalayan mountain peaks"
                width="600" height="800" loading="lazy">
           <span class="photo-caption">
@@ -719,7 +804,7 @@ button,a{-webkit-tap-highlight-color:transparent}
                 data-category="trail"
                 data-caption="The Journey Continues"
                 aria-label="Enlarge The Journey Continues photo">
-          <img src="images/trail-running-2.png"
+          <img src="images/trail-running-2.webp"
                alt="Mountain trail during an outdoor run"
                width="600" height="800" loading="lazy">
           <span class="photo-caption">
@@ -732,7 +817,7 @@ button,a{-webkit-tap-highlight-color:transparent}
                 data-category="events"
                 data-caption="Community and Running"
                 aria-label="Enlarge Community and Running photo">
-          <img src="images/race-event-2.png"
+          <img src="images/race-event-2.webp"
                alt="Runners participating in a trail race"
                width="600" height="800" loading="lazy">
           <span class="photo-caption">
