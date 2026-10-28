@@ -229,12 +229,13 @@ footer{padding:72px 0 23px;position:relative;background:#0a1014}.mountain{positi
       right: 12px;
     }
 
-    .gallery-footer {
-      text-align: center;
-      margin-top: 30px;
-      color: var(--muted);
-      font-size: 13px;
-    }
+    .gallery-description {
+    direction: ltr;
+    unicode-bidi: normal;
+    text-align: center;
+    transform: none;
+    font-style: normal;
+}
 
     /* Tablet */
     @media (min-width: 600px) {
@@ -624,8 +625,7 @@ button,a{-webkit-tap-highlight-color:transparent}
           and capturing moments of running, trekking,
           and community adventures.
         </p>
-      </header>
-
+      
       <nav class="gallery-filters" aria-label="Filter gallery">
         <button class="filter-btn active"
                 data-filter="all" aria-pressed="true">All</button>
@@ -723,9 +723,9 @@ button,a{-webkit-tap-highlight-color:transparent}
 
       </div>
 
-      <p class="gallery-footer">
-        Every trail tells a story. Every journey creates a memory.
-      </p>
+      <p class="gallery-description">
+  Every trail tells a story. Every journey creates a memory.
+</p>
 
     </div>
   </section>
