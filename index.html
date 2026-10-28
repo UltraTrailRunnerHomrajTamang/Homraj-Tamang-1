@@ -269,6 +269,18 @@ footer{padding:72px 0 23px;position:relative;background:#0a1014}.mountain{positi
         scroll-behavior: auto !important;
         transition: none !important;
       }
+      /* Fix backward Gallery text on mobile */
+@media screen and (max-width: 768px) {
+    .gallery-description,
+    .gallery-description *,
+    #gallery h2,
+    #gallery p {
+        direction: ltr !important;
+        unicode-bidi: isolate !important;
+        transform: none !important;
+        text-align: center;
+    }
+}
     }
 
 .reveal{opacity:0;transform:translateY(20px);transition:.7s}.reveal.in{opacity:1;transform:none}
